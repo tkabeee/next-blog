@@ -6,8 +6,6 @@ module.exports = {
     USER_LOCALE: process.env.USER_LOCALE,
     USER_TIMEZONE: process.env.USER_TIMEZONE,
   },
-  distDir: 'build',
-  cleanDistDir: true,
   images: {
     domains: ['localhost'],
   },
