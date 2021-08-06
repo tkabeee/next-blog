@@ -1,6 +1,26 @@
 import Head from 'next/head'
 import Image from 'next/image'
+
+import {
+  BLOG_POSTS_PER_PAGE,
+  REVALIDATE_SECONDS_BLOG_POSTS_INDEX,
+} from '../lib/constants'
+import { queryForPublishedPages } from '../lib/notion/api/databases/queryForPublishedPages'
+
 import styles from '../styles/Home.module.css'
+
+export async function getStaticProps() {
+  const response = await queryForPublishedPages(
+    '',
+    BLOG_POSTS_PER_PAGE,
+  )
+
+  return {
+    props: {
+    },
+    revalidate: REVALIDATE_SECONDS_BLOG_POSTS_INDEX
+  }
+}
 
 const Index = () => {
   return (
