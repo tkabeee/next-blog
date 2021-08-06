@@ -1,11 +1,13 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Link from 'next/link'
 
 import {
   BLOG_POSTS_PER_PAGE,
   REVALIDATE_SECONDS_BLOG_POSTS_INDEX,
 } from '../lib/constants'
 import { queryForPublishedPages } from '../lib/notion/api/databases/queryForPublishedPages'
+import { convertToPost } from '../lib/notion/convertToPost'
+import { IPost } from '../models/post'
 
 import styles from '../styles/Home.module.css'
 
@@ -15,14 +17,21 @@ export async function getStaticProps() {
     BLOG_POSTS_PER_PAGE,
   )
 
+  const posts: IPost[] = await Promise.all(
+    response.results.map(async (page) => {
+      return await convertToPost(page)
+    })
+  )
+
   return {
     props: {
+      posts,
     },
     revalidate: REVALIDATE_SECONDS_BLOG_POSTS_INDEX
   }
 }
 
-const Index = () => {
+const Index = (posts: IPost[] = []) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -36,6 +45,17 @@ const Index = () => {
         <p className={styles.description}>description</p>
 
         <div className={styles.grid}>
+          {posts.map((post, pIdx) => {
+            return (
+              <Link href={post.path} as={post.path} key={pIdx}>
+                <a className={styles.card}>
+                  <h2>{post.title}</h2>
+                  <p>{post.description}</p>
+                </a>
+              </Link>
+            )
+          })}
+
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
