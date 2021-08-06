@@ -1,14 +1,14 @@
 export interface IPost {
   id: string
-  Page: string
-  Slug: string
-  Description: string
-  Category: string
-  Tag: string[]
-  Date: number
-  CreatedAt: string
-  UpdatedAt: string
-  Published: boolean
-  Url: string
-  Path: string
+  title: string
+  slug: string
+  description: string
+  category: string
+  tags: string[]
+  date: number
+  createdAt: string
+  updatedAt: string
+  published: boolean
+  url: string
+  path: string
 }
