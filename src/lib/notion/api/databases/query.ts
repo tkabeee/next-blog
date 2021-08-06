@@ -15,7 +15,7 @@ export async function query(params: any): Promise<IResponse> {
   const { filter, sorts, startCursor, pageSize } = params
 
   return await notion.databases.query({
-    database_id: process.env.BLOG_INDEX_ID,
+    database_id: process.env.NOTION_DATABASE_ID,
     filter: filter,
     sorts: sorts,
     start_cursor: startCursor || undefined,
