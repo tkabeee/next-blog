@@ -11,12 +11,10 @@ export interface INotionPage {
   properties: {
     Page: any
     Slug: any
-    Published: any
-    Date: any
-    Authors: any
     Description: any
+    Tags: any
     Category: any
-    Tag: any
-    Editor: any
+    Date: any
+    Published: any
   }
 }
