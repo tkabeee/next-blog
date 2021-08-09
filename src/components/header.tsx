@@ -1,8 +1,6 @@
-const Header = () => {
+export const Header = () => {
   return (
     <header>
     </header>
   )
 }
-
-export default Header
