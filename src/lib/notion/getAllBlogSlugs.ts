@@ -1,6 +1,6 @@
-import { INotionPage } from './page'
-import { IResponse } from '../../lib/notion/api/databases/query'
-import { queryForPublishedPages } from '../../lib/notion/api/databases/queryForPublishedPages'
+import { INotionPage } from '../../models/notion/page'
+import { IResponse } from './api/databases/query'
+import { queryForPublishedPages } from './api/databases/queryForPublishedPages'
 
 export async function getAllBlogSlugs() {
   let slugs: string[] = []
