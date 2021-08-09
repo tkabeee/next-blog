@@ -50,7 +50,7 @@ const RenderPost = ({ post }: { post: IPost}) => {
       <Header />
       <div>
         <h1>{post?.title}</h1>
-        {post.date && (
+        {post?.date && (
           <div className="posted">Posted: {formatDateStr(post.date)}</div>
         )}
       </div>
