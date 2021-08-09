@@ -50,7 +50,6 @@ const Index = ({ posts = [] }) => {
               <Link href={post.path} as={post.path} key={pIdx}>
                 <a className={styles.card}>
                   <h2>{post.title}</h2>
-                  <p>{post.description}</p>
                 </a>
               </Link>
             )
