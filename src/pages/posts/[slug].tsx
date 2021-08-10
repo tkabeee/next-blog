@@ -48,12 +48,20 @@ const RenderPost = ({ post }: { post: IPost}) => {
   return (
     <>
       <Header />
-      <div>
-        <h1>{post?.title}</h1>
-        {post?.date && (
-          <div className="posted">Posted: {formatDateStr(post.date)}</div>
-        )}
-      </div>
+      <article>
+        <section className='break-words'>
+          <div className='flex justify-center'>
+            <div className='w-full max-w-2xl'>
+              <h1 className='mt-8 text-5xl'>{post?.title}</h1>
+              {post?.date && (
+                <div className="posted">Posted: {formatDateStr(post.date)}</div>
+              )}
+            </div>
+          </div>
+          <div className='flex justify-center'>
+          </div>
+        </section>
+      </article>
     </>
   )
 }
