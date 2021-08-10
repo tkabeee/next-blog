@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 
+import { INotionPageChunk } from '../models/notion/page-chunk'
+
 const Page = styled.div`
   display: flex;
 `
 
-export const NotionPage = () => {
+export const NotionPage = (data: INotionPageChunk) => {
   return (
     <Page>
       page
