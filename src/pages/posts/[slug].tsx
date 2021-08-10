@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 
 import { Header } from '../../components/header'
+import { NotionPage } from '../../components/notion-page'
 
 import { IPost } from '../../models/post'
 import { INotionPage } from "../../models/notion/page"
@@ -59,6 +60,7 @@ const RenderPost = ({ post }: { post: IPost}) => {
             </div>
           </div>
           <div className='flex justify-center'>
+            <NotionPage />
           </div>
         </section>
       </article>
