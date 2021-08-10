@@ -6,7 +6,7 @@ const Page = styled.div`
   display: flex;
 `
 
-export const NotionPage = (data: INotionPageChunk) => {
+export const NotionPage = ({ data }: { data: INotionPageChunk }) => {
   return (
     <Page>
       page
