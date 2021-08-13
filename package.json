@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@notionhq/client": "^0.2.4",
+    "katex": "^0.13.13",
     "next": "^11.1.0",
     "prismjs": "^1.24.1",
     "react": "^17.0.2",
