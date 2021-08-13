@@ -11,10 +11,13 @@ interface Props {
     p: string
     blockquote: string
     a: (props: any) => JSX.Element
-    h: any
+    h: (props: any) => JSX.Element
+    Code: React.ReactNode
+    Counter: React.ReactNode
+    Equation: React.ReactNode
 }
 
-export const components = {
+export const components: Props = {
   // default tags
   ol: 'ol',
   ul: 'ul',
