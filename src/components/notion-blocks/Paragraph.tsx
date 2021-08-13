@@ -21,7 +21,7 @@ const Wrap = styled.div`
   display: flex;
 `
 
-const Text = styled.div`
+const Paragraph = styled.div`
   max-width: 100%;
   width: 100%;
   white-space: pre-wrap;
@@ -44,7 +44,7 @@ const Blank = styled.div`
   }
 `
 
-export const NotionText = ({ children: component, format }: Props) => {
+export const NotionParagraph = ({ children: component, format }: Props) => {
   const blockColor = {
     color: fontColors[format?.block_color],
     fill: fontColors[format?.block_color],
@@ -54,7 +54,7 @@ export const NotionText = ({ children: component, format }: Props) => {
     <Block>
       <Wrap2 style={blockColor}>
         <Wrap>
-          {Array.isArray(component.props.children) ? <Text>{component}</Text> : <Blank />}
+          {Array.isArray(component.props.children) ? <Paragraph>{component}</Paragraph> : <Blank />}
         </Wrap>
       </Wrap2>
     </Block>

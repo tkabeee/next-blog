@@ -1,7 +1,7 @@
-import { NotionText } from "./notion-blocks/Text";
+import { NotionParagraph } from "./notion-blocks/Paragraph";
 import { NotionHeader } from "./notion-blocks/Header";
 
 export {
-  NotionText,
+  NotionParagraph,
   NotionHeader,
 }
