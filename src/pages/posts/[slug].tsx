@@ -64,7 +64,9 @@ const RenderPost = ({ post, pageData }: { post: IPost, pageData: INotionPageChun
             </div>
           </div>
           <div className='flex justify-center'>
-            <NotionPage data={pageData} />
+            <div className='w-full max-w-2xl'>
+              {pageData && <NotionPage data={pageData} />}
+            </div>
           </div>
         </section>
       </article>
