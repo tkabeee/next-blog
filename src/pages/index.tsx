@@ -44,17 +44,27 @@ const Index = ({ posts = [] }) => {
 
         <p className={styles.description}>description</p>
 
-        <div className={styles.grid}>
-          {posts.length > 0 && posts.map((post: IPost, pIdx: number) => {
-            return (
-              <Link href={post.path} as={post.path} key={pIdx}>
-                <a className={styles.card}>
-                  <h2>{post.title}</h2>
-                </a>
-              </Link>
-            )
-          })}
-        </div>
+        <section className={styles['article-list']}>
+          <div>
+            <nav>
+            {posts.length > 0 && posts.map((post: IPost, pIdx: number) => {
+              return (
+                <Link href={post.path} as={post.path} key={pIdx}>
+                  <a className={styles['feed-article']}>
+                    <section className={styles['feed-article__content']}>
+                      <header className={styles['feed-article__head']}></header>
+                      <h3 className={styles['feed-article__title']}>{post.title}</h3>
+                    </section>
+                  </a>
+                </Link>
+              )
+            })}
+            </nav>
+            <button>
+              <span>LOAD MORE</span>
+            </button>
+          </div>
+        </section>
       </main>
 
       <footer className={styles.footer}></footer>
