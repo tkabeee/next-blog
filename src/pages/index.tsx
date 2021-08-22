@@ -33,18 +33,14 @@ export async function getStaticProps() {
 
 const Index = ({ posts = [] }) => {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Noition Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main className={styles.main}>
-        <h1 className={styles.title}>Blog</h1>
-
-        <p className={styles.description}>description</p>
-
         <section className={styles['article-list']}>
+          <h2 className={styles['article-list__title']}>Stories</h2>
           <div>
             <nav>
             {posts.length > 0 && posts.map((post: IPost, pIdx: number) => {
@@ -66,9 +62,7 @@ const Index = ({ posts = [] }) => {
           </div>
         </section>
       </main>
-
-      <footer className={styles.footer}></footer>
-    </div>
+    </>
   )
 }
 
