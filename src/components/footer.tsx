@@ -1,5 +1,5 @@
 export const Footer = () => {
   return (
-    <footer></footer>
+    <footer className='flex justify-center items-center w-full'></footer>
   )
 }
