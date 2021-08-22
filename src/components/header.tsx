@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 
-export const NavBar = styled.nav`
+const NavBar = styled.nav`
   position: sticky;
   top: 0;
   z-index: var(--zindex-sticky);
@@ -11,9 +11,9 @@ export const NavBar = styled.nav`
   background-color: var(--navbar-background-color);
 `
 
-export const NavBarInner = styled.div``
-export const NavBarItems = styled.div``
-export const NavBarTitle = styled.strong``
+const NavBarInner = styled.div``
+const NavBarItems = styled.div``
+const NavBarTitle = styled.strong``
 
 export const Header = () => {
   return (
