@@ -52,7 +52,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async({ params }) =
 const RenderPost = ({ post, pageData }: { post: IPost, pageData: INotionPageChunk}) => {
   return (
     <>
-      <Header />
       <article>
         <section className='break-words'>
           <div className='flex justify-center'>
