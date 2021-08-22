@@ -11,7 +11,14 @@ import { convertToPost } from '../lib/notion/convertToPost'
 import { formatDateStr } from '../lib/helpers/blog-helper'
 import { IPost } from '../models/post'
 
-import { ArticleList, ArticleListTitle, FeedArticleLink, FeedArticleContent, FeedArticleHead, FeedArticleTitle } from '../styles/components/home'
+import {
+  ArticleList,
+  ArticleListTitle,
+  FeedArticleLink,
+  FeedArticleContent,
+  FeedArticleHead,
+  FeedArticleTitle,
+} from '../styles/components/home'
 
 export async function getStaticProps() {
   const response = await queryForPublishedPages(
@@ -33,13 +40,13 @@ export async function getStaticProps() {
   }
 }
 
-const Main = styled.div`
-  padding: 5rem 0;
-  flex: 1;
+const Main = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex: 1;
+  padding: 5rem 0;
 `
 
 const Index = ({ posts = [] }) => {
