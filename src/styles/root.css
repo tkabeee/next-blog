@@ -1,0 +1,32 @@
+:root {
+  --color-primary: #0068c4;
+  --color-secondary: #ebedf0;
+  --color-white: #fff;
+  --color-black: #000;
+
+  --global-space--xs: 0.5rem;
+  --global-space--sm: 0.8rem;
+  --global-space--md: 1rem;
+  --global-space--lg: 1.4rem;
+  --global-space--xl: 2rem;
+
+  --navbar-padding-vertical: var(--global-space--md);
+  --navbar-padding-horizontal: var(--global-space--md);
+  --navbar-height: 3.75rem;
+  --navbar-background-color: var(--color-white);
+
+  --zindex-level-1: 1000;
+  --zindex-level-2: 2000;
+  --zindex-level-3: 3000;
+  --zindex-level-4: 4000;
+  --zindex-level-5: 5000;
+
+  --zindex-dropdown: 1000;
+  --zindex-sticky: 1020;
+  --zindex-fixed: 1030;
+  --zindex-modal-backdrop: 1050;
+  --zindex-modal: 1055;
+  --zindex-popover: 1070;
+  --zindex-tooltip: 1080;
+  --zindex-most: 1999;
+}
