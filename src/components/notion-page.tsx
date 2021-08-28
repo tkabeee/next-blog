@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import { INotionPageChunk } from '../models/notion/page-chunk'
 import { textBlock } from '../lib/notion/renderers'
+import { getApiAssetUrl } from '../lib/helpers/blog-helper'
 
 import {
   NotionParagraph,
@@ -11,6 +12,7 @@ import {
   NotionBulletedList,
   NotionNumberedList,
   NotionBookmark,
+  NotionImage,
 } from './notion-blocks'
 
 const Page = styled.div`
@@ -135,6 +137,30 @@ export const NotionPage = ({ data }: Props) => {
                 title={title}
                 description={description}
                 format={format}
+              />
+            )
+            break
+          }
+
+          // Image blocks
+          case 'image': {
+            const { format = {} } = value
+            const {
+              block_width,
+              block_height,
+              display_source,
+              block_aspect_ratio,
+            } = format
+            const width = block_width
+            const height = block_height || block_width * block_aspect_ratio
+            toRender.push(
+              <NotionImage
+                key={id}
+                src={getApiAssetUrl(display_source, id)}
+                alt={properties.caption && properties.caption[0][0]}
+                width={width}
+                height={height}
+                wrapped={Object.keys(columnMap).indexOf(parent_id) != -1}
               />
             )
             break
