@@ -28,6 +28,14 @@ interface Props {
 
 export const NotionPage = ({ data }: Props) => {
   let numberedListIds: number[] = []
+  let columnMap: {
+    [id: string]: {
+      key: string
+      parent_id: string
+      nested: string[]
+      children: React.ReactFragment[]
+    }
+  } = {}
 
   return (
     <Page>
@@ -139,6 +147,15 @@ export const NotionPage = ({ data }: Props) => {
             break
           }
         }
+
+        // add column
+        if (columnMap[parent_id]) {
+          columnMap[parent_id].nested.push(id)
+          columnMap[parent_id].children.push(toRender)
+
+          return []
+        }
+
         return toRender
       })}
     </Page>
