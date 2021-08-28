@@ -6,6 +6,8 @@ import { textBlock } from '../lib/notion/renderers'
 import {
   NotionParagraph,
   NotionHeader,
+  NotionSubHeader,
+  NotionSubSubHeader,
  } from './notion-blocks'
 
 const Page = styled.div`
@@ -54,6 +56,27 @@ export const NotionPage = ({ data }: Props) => {
             )
             break
           }
+
+          // Heading two blocks
+          case 'sub_header': {
+            toRender.push(
+              <NotionSubHeader key={id} id={id}>
+                {textBlock(properties ? properties.title : [], true, id)}
+              </NotionSubHeader>
+            )
+            break
+          }
+
+          // Heading three blocks
+          case 'sub_sub_header': {
+            toRender.push(
+              <NotionSubSubHeader key={id} id={id}>
+                {textBlock(properties ? properties.title : [], true, id)}
+              </NotionSubSubHeader>
+            )
+            break
+          }
+
           default:
             if (process.env.NODE_ENV !== 'production') {
               console.log('unknown type', type)
