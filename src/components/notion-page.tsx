@@ -35,8 +35,9 @@ export const NotionPage = ({ data }: Props) => {
         let toRender = []
 
         switch (type) {
-          case 'page':
+          case 'page': {
             break
+          }
 
           // Paragraph blocks
           case 'text': {
@@ -89,11 +90,12 @@ export const NotionPage = ({ data }: Props) => {
             break
           }
 
-          default:
+          default: {
             if (process.env.NODE_ENV !== 'production') {
               console.log('unknown type', type)
             }
             break
+          }
         }
         return toRender
       })}
