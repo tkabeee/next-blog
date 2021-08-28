@@ -6,7 +6,11 @@ import { textBlock } from '../lib/notion/renderers'
 import {
   NotionParagraph,
   NotionHeader,
- } from './notion-blocks'
+  NotionSubHeader,
+  NotionSubSubHeader,
+  NotionBulletedList,
+  NotionNumberedList,
+} from './notion-blocks'
 
 const Page = styled.div`
   display: flex;
@@ -22,17 +26,29 @@ interface Props {
 }
 
 export const NotionPage = ({ data }: Props) => {
+  let numberedListIds: number[] = []
+
   return (
     <Page>
-      {(!data.blocks || data.blocks.length === 0) && console.log('This page has no content')}
+      {(!data.blocks || data.blocks.length === 0) &&
+        console.log('This page has no content')}
       {(data.blocks || []).map((block, blockIdx) => {
         const { role, value } = block
         const { type, properties, id, parent_id } = value
+        const isEditor = role === 'editor'
+        const isNumberedList = type === 'numbered_list'
+
         let toRender = []
 
+        // reset list number
+        if (isEditor && !isNumberedList) {
+          numberedListIds = []
+        }
+
         switch (type) {
-          case 'page':
+          case 'page': {
             break
+          }
 
           // Paragraph blocks
           case 'text': {
@@ -54,11 +70,57 @@ export const NotionPage = ({ data }: Props) => {
             )
             break
           }
-          default:
+
+          // Heading two blocks
+          case 'sub_header': {
+            toRender.push(
+              <NotionSubHeader key={id} id={id}>
+                {textBlock(properties ? properties.title : [], true, id)}
+              </NotionSubHeader>
+            )
+            break
+          }
+
+          // Heading three blocks
+          case 'sub_sub_header': {
+            toRender.push(
+              <NotionSubSubHeader key={id} id={id}>
+                {textBlock(properties ? properties.title : [], true, id)}
+              </NotionSubSubHeader>
+            )
+            break
+          }
+
+          // Bulleted list item blocks
+          case 'bulleted_list': {
+            toRender.push(
+              <NotionBulletedList key={id}>
+                {textBlock(properties ? properties.title : [], true, id)}
+              </NotionBulletedList>
+            )
+            break
+          }
+
+          // Numbered list item blocks
+          case 'numbered_list': {
+            numberedListIds.push(id)
+            toRender.push(
+              <NotionNumberedList
+                key={id}
+                number={numberedListIds.indexOf(id) + 1}
+              >
+                {textBlock(properties ? properties.title : [], true, id)}
+              </NotionNumberedList>
+            )
+            break
+          }
+
+          default: {
             if (process.env.NODE_ENV !== 'production') {
               console.log('unknown type', type)
             }
             break
+          }
         }
         return toRender
       })}
