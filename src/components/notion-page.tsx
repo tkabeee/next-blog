@@ -10,6 +10,7 @@ import {
   NotionSubSubHeader,
   NotionBulletedList,
   NotionNumberedList,
+  NotionBookmark,
 } from './notion-blocks'
 
 const Page = styled.div`
@@ -111,6 +112,22 @@ export const NotionPage = ({ data }: Props) => {
               >
                 {textBlock(properties ? properties.title : [], true, id)}
               </NotionNumberedList>
+            )
+            break
+          }
+
+          // Bookmark blocks
+          case 'bookmark': {
+            const { link, title, description } = properties
+            const { format = {} } = value
+            toRender.push(
+              <NotionBookmark
+                key={id}
+                link={link}
+                title={title}
+                description={description}
+                format={format}
+              />
             )
             break
           }
