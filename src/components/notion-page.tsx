@@ -10,7 +10,7 @@ import {
   NotionSubSubHeader,
   NotionBulletedList,
   NotionNumberedList,
- } from './notion-blocks'
+} from './notion-blocks'
 
 const Page = styled.div`
   display: flex;
@@ -26,13 +26,24 @@ interface Props {
 }
 
 export const NotionPage = ({ data }: Props) => {
+  let numberedListIds: number[] = []
+
   return (
     <Page>
-      {(!data.blocks || data.blocks.length === 0) && console.log('This page has no content')}
+      {(!data.blocks || data.blocks.length === 0) &&
+        console.log('This page has no content')}
       {(data.blocks || []).map((block, blockIdx) => {
         const { role, value } = block
         const { type, properties, id, parent_id } = value
+        const isEditor = role === 'editor'
+        const isNumberedList = type === 'numbered_list'
+
         let toRender = []
+
+        // reset list number
+        if (isEditor && !isNumberedList) {
+          numberedListIds = []
+        }
 
         switch (type) {
           case 'page': {
@@ -86,6 +97,20 @@ export const NotionPage = ({ data }: Props) => {
               <NotionBulletedList key={id}>
                 {textBlock(properties ? properties.title : [], true, id)}
               </NotionBulletedList>
+            )
+            break
+          }
+
+          // Numbered list item blocks
+          case 'numbered_list': {
+            numberedListIds.push(id)
+            toRender.push(
+              <NotionNumberedList
+                key={id}
+                number={numberedListIds.indexOf(id) + 1}
+              >
+                {textBlock(properties ? properties.title : [], true, id)}
+              </NotionNumberedList>
             )
             break
           }
