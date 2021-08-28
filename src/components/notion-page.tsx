@@ -8,6 +8,8 @@ import {
   NotionHeader,
   NotionSubHeader,
   NotionSubSubHeader,
+  NotionBulletedList,
+  NotionNumberedList,
  } from './notion-blocks'
 
 const Page = styled.div`
@@ -73,6 +75,16 @@ export const NotionPage = ({ data }: Props) => {
               <NotionSubSubHeader key={id} id={id}>
                 {textBlock(properties ? properties.title : [], true, id)}
               </NotionSubSubHeader>
+            )
+            break
+          }
+
+          // Bulleted list item blocks
+          case 'bulleted_list': {
+            toRender.push(
+              <NotionBulletedList key={id}>
+                {textBlock(properties ? properties.title : [], true, id)}
+              </NotionBulletedList>
             )
             break
           }
