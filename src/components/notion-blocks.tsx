@@ -4,6 +4,7 @@ import { NotionSubHeader } from './notion-blocks/sub-header'
 import { NotionSubSubHeader } from './notion-blocks/sub-sub-header'
 import { NotionBulletedList } from './notion-blocks/bulleted-list'
 import { NotionNumberedList } from './notion-blocks/numbered-list'
+import { NotionBookmark } from './notion-blocks/bookmark'
 
 export {
   NotionParagraph,
@@ -12,4 +13,5 @@ export {
   NotionSubSubHeader,
   NotionBulletedList,
   NotionNumberedList,
+  NotionBookmark,
 }
