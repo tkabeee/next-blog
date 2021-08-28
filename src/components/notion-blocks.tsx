@@ -3,6 +3,7 @@ import { NotionHeader } from './notion-blocks/header'
 import { NotionSubHeader } from './notion-blocks/sub-header'
 import { NotionSubSubHeader } from './notion-blocks/sub-sub-header'
 import { NotionBulletedList } from './notion-blocks/bulleted-list'
+import { NotionNumberedList } from './notion-blocks/numbered-list'
 
 export {
   NotionParagraph,
@@ -10,4 +11,5 @@ export {
   NotionSubHeader,
   NotionSubSubHeader,
   NotionBulletedList,
+  NotionNumberedList,
 }
