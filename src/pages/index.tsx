@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
 
+import { Container } from '../components/container'
+
 import {
   BLOG_POSTS_PER_PAGE,
   REVALIDATE_SECONDS_BLOG_POSTS_INDEX,
@@ -10,6 +12,9 @@ import { queryForPublishedPages } from '../lib/notion/api/databases/queryForPubl
 import { convertToPost } from '../lib/notion/convertToPost'
 import { formatDateStr } from '../lib/helpers/blog-helper'
 import { IPost } from '../models/post'
+
+import { borderColors } from '../styles/global'
+import { spacingUnit } from '../styles/notion.global'
 
 export async function getStaticProps() {
   const response = await queryForPublishedPages('', BLOG_POSTS_PER_PAGE)
@@ -39,11 +44,13 @@ const Main = styled.main`
 
 const ArticleList = styled.section``
 
-const ArticleListTitle = styled.h2``
+const ArticleListTitle = styled.h2`
+  margin-bottom: ${Math.floor(spacingUnit * 3.75)}px; ;
+`
 
 const FeedArticleLink = styled.a`
   display: flex;
-  border-top: 1px solid #d7d7d7;
+  border-top: 1px solid ${borderColors.gray};
   padding: 30px 0;
 `
 
@@ -51,49 +58,64 @@ const FeedArticleContent = styled.section`
   flex: 1;
 `
 
-const FeedArticleHead = styled.header`
-  margin-bottom: 10px;
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: 1.5;
+const FeedArticleMeta = styled.div`
+  margin-top: 10px;
 `
 
 const FeedArticleTitle = styled.h3`
   margin-bottom: 0;
 `
 
+const ButtonLoadMore = styled.button`
+  margin-top: 25px;
+  padding: 25px 0;
+  width: 100%;
+  background: #3367d6;
+  border: 0;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  &:hover {
+    background: #4285f4;
+  }
+`
+
 const Index = ({ posts = [] }) => {
   return (
     <>
       <Head>
-        <title>Noition Blog</title>
+        <title>The Next Blog</title>
       </Head>
       <Main>
-        <ArticleList>
-          <ArticleListTitle>Stories</ArticleListTitle>
-          <div>
-            <nav>
-              {posts.length > 0 &&
-                posts.map((post: IPost, pIdx: number) => {
-                  return (
-                    <Link href={post.path} as={post.path} key={pIdx} passHref>
-                      <FeedArticleLink>
-                        <FeedArticleContent>
-                          <FeedArticleHead>
-                            {formatDateStr(post.createdAt)}
-                          </FeedArticleHead>
-                          <FeedArticleTitle>{post.title}</FeedArticleTitle>
-                        </FeedArticleContent>
-                      </FeedArticleLink>
-                    </Link>
-                  )
-                })}
-            </nav>
-            <button>
-              <span>LOAD MORE</span>
-            </button>
-          </div>
-        </ArticleList>
+        <Container>
+          <ArticleList>
+            <ArticleListTitle>Recent posts</ArticleListTitle>
+            <div>
+              <nav>
+                {posts.length > 0 &&
+                  posts.map((post: IPost, pIdx: number) => {
+                    return (
+                      <Link href={post.path} as={post.path} key={pIdx} passHref>
+                        <FeedArticleLink>
+                          <FeedArticleContent>
+                            <FeedArticleTitle>{post.title}</FeedArticleTitle>
+                            <FeedArticleMeta>
+                              <time dateTime={post.createdAt}>
+                                {formatDateStr(post.createdAt)}
+                              </time>
+                            </FeedArticleMeta>
+                          </FeedArticleContent>
+                        </FeedArticleLink>
+                      </Link>
+                    )
+                  })}
+              </nav>
+              <ButtonLoadMore>
+                <span>Load More Posts</span>
+              </ButtonLoadMore>
+            </div>
+          </ArticleList>
+        </Container>
       </Main>
     </>
   )
