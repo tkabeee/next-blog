@@ -1,14 +1,16 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
+import styled from 'styled-components'
 
 import { Header } from '../../components/header'
+import { Container } from '../../components/container'
 import { NotionPage } from '../../components/notion-page'
 
 import { IPost } from '../../models/post'
-import { INotionPage } from "../../models/notion/page"
+import { INotionPage } from '../../models/notion/page'
 import { INotionPageChunk } from '../../models/notion/page-chunk'
 import { REVALIDATE_SECONDS_BLOG_POST } from '../../lib/constants'
-import { getAllBlogSlugs } from "../../lib/notion/getAllBlogSlugs"
-import { getPageBySlug } from "../../lib/notion/getPage"
+import { getAllBlogSlugs } from '../../lib/notion/getAllBlogSlugs'
+import { getPageBySlug } from '../../lib/notion/getPage'
 import { convertToPost } from '../../lib/notion/convertToPost'
 
 import { formatDateStr } from '../../lib/helpers/blog-helper'
@@ -22,7 +24,7 @@ type Props = {
   post: IPost
 }
 
-export const getStaticPaths: GetStaticPaths<Params> = async() => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const list: string[] = await getAllBlogSlugs()
   const paths = list.map((slug) => {
     return { params: { slug: slug } }
@@ -34,7 +36,9 @@ export const getStaticPaths: GetStaticPaths<Params> = async() => {
   }
 }
 
-export const getStaticProps: GetStaticProps<Props, Params> = async({ params }) => {
+export const getStaticProps: GetStaticProps<Props, Params> = async ({
+  params,
+}) => {
   const page: INotionPage = await getPageBySlug(params!.slug)
 
   const post: IPost = await convertToPost(page)
@@ -49,26 +53,65 @@ export const getStaticProps: GetStaticProps<Props, Params> = async({ params }) =
   }
 }
 
-const RenderPost = ({ post, pageData }: { post: IPost, pageData: INotionPageChunk}) => {
+const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+  overflow: auto;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  width: 100%;
+`
+
+const PageTitle = styled.h1`
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: text;
+`
+
+const PageContent = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  flex-grow: 1;
+  padding-bottom: 15vh;
+`
+
+const RenderPost = ({
+  post,
+  pageData,
+}: {
+  post: IPost
+  pageData: INotionPageChunk
+}) => {
   return (
     <>
-      <article>
-        <section className='break-words'>
-          <div className='flex justify-center'>
-            <div className='w-full max-w-2xl'>
-              <h1 className='mt-8 text-5xl'>{post?.title}</h1>
+      <Article>
+        <Container className="mt-20">
+          <div className="flex justify-center">
+            <div className="w-full">
+              <PageTitle className="mt-8 text-5xl">{post?.title}</PageTitle>
               {post?.date && (
-                <div className="posted">Posted: {formatDateStr(post.date)}</div>
+                <div className="mt-3">Posted: {formatDateStr(post.date)}</div>
               )}
             </div>
           </div>
-          <div className='flex justify-center'>
-            <div className='w-full max-w-2xl'>
-              {pageData && <NotionPage data={pageData} />}
+        </Container>
+        <Container className="mt-8">
+          <PageContent>
+            <div className="flex justify-center">
+              <div className="w-full">
+                {pageData && <NotionPage data={pageData} />}
+              </div>
             </div>
-          </div>
-        </section>
-      </article>
+          </PageContent>
+        </Container>
+      </Article>
     </>
   )
 }
