@@ -93,7 +93,7 @@ const RenderPost = ({
     <>
       <Header />
       <Article>
-        <Container className="mt-20 sm:pl-6 sm:pr-6">
+        <Container className="mt-20">
           <div className="flex justify-center">
             <div className="w-full">
               <PageTitle className="mt-8 text-5xl">{post?.title}</PageTitle>
@@ -103,7 +103,7 @@ const RenderPost = ({
             </div>
           </div>
         </Container>
-        <Container className="mt-8 sm:pl-6 sm:pr-6">
+        <Container className="mt-8">
           <PageContent>
             <div className="flex justify-center">
               <div className="w-full">
