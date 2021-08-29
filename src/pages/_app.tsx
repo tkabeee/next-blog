@@ -6,7 +6,7 @@ import { Footer } from '../components/footer'
 
 import '../styles/tailwind.css'
 import '../styles/root.css'
-import '../styles/globals.css'
+import '../styles/global.css'
 
 const Wrapper = styled.div`
   display: flex;
