@@ -7,6 +7,7 @@ import { Footer } from '../components/footer'
 import '../styles/tailwind.css'
 import '../styles/root.css'
 import '../styles/global.css'
+import '../styles/notion.scss'
 
 const Wrapper = styled.div`
   display: flex;
