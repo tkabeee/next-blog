@@ -97,9 +97,9 @@ const RenderPost = ({
         <title>{title}</title>
       </Head>
       <Article>
-        <Container className="mt-20">
+        <Container className="mt-16">
           <div className="flex justify-center w-full">
-            <div>
+            <div className="w-full">
               {title && (
                 <PageTitle className="mt-8 text-5xl">{title}</PageTitle>
               )}
@@ -110,8 +110,8 @@ const RenderPost = ({
           </div>
         </Container>
         <Container className="mt-8">
-          <PageContent>
-            <div className="flex justify-center">
+          <PageContent className="notion-page-content">
+            <div className="flex justify-center w-full">
               <div className="w-full">
                 {pageData && <NotionPage data={pageData} />}
               </div>
