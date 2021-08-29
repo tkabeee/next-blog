@@ -89,22 +89,20 @@ const RenderPost = ({
   post: IPost
   pageData: INotionPageChunk
 }) => {
-  const { title, date } = post
-
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{post?.title}</title>
       </Head>
       <Article>
         <Container className="mt-16">
           <div className="flex justify-center w-full">
             <div className="w-full">
-              {title && (
-                <PageTitle className="mt-8 text-5xl">{title}</PageTitle>
+              {post?.title && (
+                <PageTitle className="mt-8 text-5xl">{post.title}</PageTitle>
               )}
-              {date && (
-                <div className="mt-3">Posted: {formatDateStr(date)}</div>
+              {post?.date && (
+                <div className="mt-3">Posted: {formatDateStr(post.date)}</div>
               )}
             </div>
           </div>
