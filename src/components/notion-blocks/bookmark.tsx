@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { spacingUnit } from '../../styles/notion.global'
+
 interface Props {
   link: string
   title: string
@@ -10,7 +12,6 @@ interface Props {
   }
 }
 
-const spacingUnit: number = 16
 const spacingVertical1 = `${Math.floor(spacingUnit * 0.857)}px` // 14px
 const spacingVertical2 = `${spacingUnit}px` // 16px
 const spacingVertical3 = `${Math.floor(spacingUnit * 1.25)}px` // 20px
