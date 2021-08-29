@@ -110,9 +110,11 @@ const Index = ({ posts = [] }) => {
                     )
                   })}
               </nav>
+              {/*
               <ButtonLoadMore>
                 <span>Load More Posts</span>
               </ButtonLoadMore>
+              */}
             </div>
           </ArticleList>
         </Container>
