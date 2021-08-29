@@ -10,6 +10,6 @@ module.exports = {
     USER_TIMEZONE: process.env.USER_TIMEZONE,
   },
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'noiton-blog.vercel.app'],
   },
 }
