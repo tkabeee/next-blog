@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
+import styled from 'styled-components'
 
 import { Header } from '../../components/header'
 import { NotionPage } from '../../components/notion-page'
@@ -13,6 +14,8 @@ import { convertToPost } from '../../lib/notion/convertToPost'
 
 import { formatDateStr } from '../../lib/helpers/blog-helper'
 import { getPageData } from '../../lib/notion/getPageData'
+
+import { spacingUnit, pageMaxWidth } from '../../styles/notion.global'
 
 type Params = {
   slug: string
@@ -51,6 +54,46 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   }
 }
 
+const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  position: relative;
+  z-index: 1;
+  overflow: auto;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  width: 100%;
+`
+
+const ArticleHero = styled.section`
+  padding-left: ${Math.floor(spacingUnit * 6)}px;
+  padding-right: ${Math.floor(spacingUnit * 6)}px;
+  width: ${pageMaxWidth}px;
+  max-width: 100%;
+`
+
+const PageTitle = styled.h1`
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: text;
+`
+
+const PageContent = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  flex-grow: 1;
+  padding-left: ${Math.floor(spacingUnit * 6)}px;
+  padding-right: ${Math.floor(spacingUnit * 6)}px;
+  padding-bottom: 15vh;
+  width: ${pageMaxWidth}px;
+  max-width: 100%;
+`
+
 const RenderPost = ({
   post,
   pageData,
@@ -61,23 +104,25 @@ const RenderPost = ({
   return (
     <>
       <Header />
-      <article>
-        <section className="break-words">
+      <Article>
+        <ArticleHero className="mt-20">
           <div className="flex justify-center">
-            <div className="w-full max-w-2xl">
-              <h1 className="mt-8 text-5xl">{post?.title}</h1>
+            <div className="w-full">
+              <PageTitle className="mt-8 text-5xl">{post?.title}</PageTitle>
               {post?.date && (
-                <div className="posted">Posted: {formatDateStr(post.date)}</div>
+                <div className="mt-3">Posted: {formatDateStr(post.date)}</div>
               )}
             </div>
           </div>
+        </ArticleHero>
+        <PageContent className="mt-8">
           <div className="flex justify-center">
-            <div className="w-full max-w-2xl">
+            <div className="w-full">
               {pageData && <NotionPage data={pageData} />}
             </div>
           </div>
-        </section>
-      </article>
+        </PageContent>
+      </Article>
     </>
   )
 }
