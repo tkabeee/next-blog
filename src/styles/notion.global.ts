@@ -1,6 +1,7 @@
 export const fontFamily: string =
   "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji', 'Segoe UI Symbol'"
 
+export const spacingUnit: number = 16
 export const pageMaxWidth: number = 900
 
 export const fontColors: any = {
