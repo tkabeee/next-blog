@@ -11,20 +11,8 @@ import { convertToPost } from '../lib/notion/convertToPost'
 import { formatDateStr } from '../lib/helpers/blog-helper'
 import { IPost } from '../models/post'
 
-import {
-  ArticleList,
-  ArticleListTitle,
-  FeedArticleLink,
-  FeedArticleContent,
-  FeedArticleHead,
-  FeedArticleTitle,
-} from '../styles/components/home'
-
 export async function getStaticProps() {
-  const response = await queryForPublishedPages(
-    '',
-    BLOG_POSTS_PER_PAGE,
-  )
+  const response = await queryForPublishedPages('', BLOG_POSTS_PER_PAGE)
 
   const posts: IPost[] = await Promise.all(
     response.results.map(async (page) => {
@@ -36,7 +24,7 @@ export async function getStaticProps() {
     props: {
       posts,
     },
-    revalidate: REVALIDATE_SECONDS_BLOG_POSTS_INDEX
+    revalidate: REVALIDATE_SECONDS_BLOG_POSTS_INDEX,
   }
 }
 
@@ -49,30 +37,57 @@ const Main = styled.main`
   padding: 5rem 0;
 `
 
+const ArticleList = styled.section``
+
+const ArticleListTitle = styled.h2``
+
+const FeedArticleLink = styled.a`
+  display: flex;
+  border-top: 1px solid #d7d7d7;
+  padding: 30px 0;
+`
+
+const FeedArticleContent = styled.section`
+  flex: 1;
+`
+
+const FeedArticleHead = styled.header`
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 1.5;
+`
+
+const FeedArticleTitle = styled.h3`
+  margin-bottom: 0;
+`
+
 const Index = ({ posts = [] }) => {
   return (
     <>
       <Head>
         <title>Noition Blog</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
         <ArticleList>
           <ArticleListTitle>Stories</ArticleListTitle>
           <div>
             <nav>
-              {posts.length > 0 && posts.map((post: IPost, pIdx: number) => {
-                return (
-                  <Link href={post.path} as={post.path} key={pIdx} passHref>
-                    <FeedArticleLink>
-                      <FeedArticleContent>
-                        <FeedArticleHead>{formatDateStr(post.createdAt)}</FeedArticleHead>
-                        <FeedArticleTitle>{post.title}</FeedArticleTitle>
-                      </FeedArticleContent>
-                    </FeedArticleLink>
-                  </Link>
-                )
-              })}
+              {posts.length > 0 &&
+                posts.map((post: IPost, pIdx: number) => {
+                  return (
+                    <Link href={post.path} as={post.path} key={pIdx} passHref>
+                      <FeedArticleLink>
+                        <FeedArticleContent>
+                          <FeedArticleHead>
+                            {formatDateStr(post.createdAt)}
+                          </FeedArticleHead>
+                          <FeedArticleTitle>{post.title}</FeedArticleTitle>
+                        </FeedArticleContent>
+                      </FeedArticleLink>
+                    </Link>
+                  )
+                })}
             </nav>
             <button>
               <span>LOAD MORE</span>
