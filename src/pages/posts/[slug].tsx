@@ -1,7 +1,7 @@
+import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import styled from 'styled-components'
 
-import { Header } from '../../components/header'
 import { Container } from '../../components/container'
 import { NotionPage } from '../../components/notion-page'
 
@@ -89,15 +89,22 @@ const RenderPost = ({
   post: IPost
   pageData: INotionPageChunk
 }) => {
+  const { title, date } = post
+
   return (
     <>
+      <Head>
+        <title>{title}</title>
+      </Head>
       <Article>
         <Container className="mt-20">
-          <div className="flex justify-center">
-            <div className="w-full">
-              <PageTitle className="mt-8 text-5xl">{post?.title}</PageTitle>
-              {post?.date && (
-                <div className="mt-3">Posted: {formatDateStr(post.date)}</div>
+          <div className="flex justify-center w-full">
+            <div>
+              {title && (
+                <PageTitle className="mt-8 text-5xl">{title}</PageTitle>
+              )}
+              {date && (
+                <div className="mt-3">Posted: {formatDateStr(date)}</div>
               )}
             </div>
           </div>
