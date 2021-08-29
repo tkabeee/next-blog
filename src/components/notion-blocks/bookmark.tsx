@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
-import { spacingUnit } from '../../styles/notion.global'
+import {
+  spacingUnit,
+  spacingVertical1,
+  spacingVertical2,
+  spacingVertical3,
+  spacingVertical4,
+} from '../../styles/notion.global'
 
 interface Props {
   link: string
@@ -11,11 +17,6 @@ interface Props {
     bookmark_cover: string
   }
 }
-
-const spacingVertical1 = `${Math.floor(spacingUnit * 0.857)}px` // 14px
-const spacingVertical2 = `${spacingUnit}px` // 16px
-const spacingVertical3 = `${Math.floor(spacingUnit * 1.25)}px` // 20px
-const spacingVertical4 = `${Math.floor(spacingUnit * 1.428)}px` // 23px
 
 const fontSizeSm = spacingVertical1
 const fontSize = spacingVertical2
