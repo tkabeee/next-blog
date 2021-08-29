@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import styled from 'styled-components'
 
 import { Header } from '../../components/header'
+import { Container } from '../../components/container'
 import { NotionPage } from '../../components/notion-page'
 
 import { IPost } from '../../models/post'
@@ -15,7 +16,6 @@ import { convertToPost } from '../../lib/notion/convertToPost'
 import { formatDateStr } from '../../lib/helpers/blog-helper'
 import { getPageData } from '../../lib/notion/getPageData'
 
-import { spacingUnit, pageMaxWidth } from '../../styles/notion.global'
 type Params = {
   slug: string
 }
@@ -66,13 +66,6 @@ const Article = styled.article`
   width: 100%;
 `
 
-const ArticleHero = styled.section`
-  padding-left: ${Math.floor(spacingUnit * 6)}px;
-  padding-right: ${Math.floor(spacingUnit * 6)}px;
-  width: ${pageMaxWidth}px;
-  max-width: 100%;
-`
-
 const PageTitle = styled.h1`
   font-size: 40px;
   font-weight: 700;
@@ -86,11 +79,7 @@ const PageContent = styled.section`
   align-items: center;
   flex-shrink: 0;
   flex-grow: 1;
-  padding-left: ${Math.floor(spacingUnit * 6)}px;
-  padding-right: ${Math.floor(spacingUnit * 6)}px;
   padding-bottom: 15vh;
-  width: ${pageMaxWidth}px;
-  max-width: 100%;
 `
 
 const RenderPost = ({
@@ -104,7 +93,7 @@ const RenderPost = ({
     <>
       <Header />
       <Article>
-        <ArticleHero className="mt-20">
+        <Container className="mt-20 sm:pl-6 sm:pr-6">
           <div className="flex justify-center">
             <div className="w-full">
               <PageTitle className="mt-8 text-5xl">{post?.title}</PageTitle>
@@ -113,14 +102,16 @@ const RenderPost = ({
               )}
             </div>
           </div>
-        </ArticleHero>
-        <PageContent className="mt-8">
-          <div className="flex justify-center">
-            <div className="w-full">
-              {pageData && <NotionPage data={pageData} />}
+        </Container>
+        <Container className="mt-8 sm:pl-6 sm:pr-6">
+          <PageContent>
+            <div className="flex justify-center">
+              <div className="w-full">
+                {pageData && <NotionPage data={pageData} />}
+              </div>
             </div>
-          </div>
-        </PageContent>
+          </PageContent>
+        </Container>
       </Article>
     </>
   )
