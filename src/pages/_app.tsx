@@ -8,7 +8,7 @@ import '../styles/tailwind.css'
 import '../styles/root.css'
 import '../styles/globals.css'
 
-const Container = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,11 +19,11 @@ const Container = styled.div`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Container>
+    <Wrapper>
       <Header />
       <Component {...pageProps} />
       <Footer />
-    </Container>
+    </Wrapper>
   )
 }
 export default MyApp
