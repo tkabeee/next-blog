@@ -12,8 +12,8 @@ export async function convertToPost(page: INotionPage): Promise<IPost> {
   const tags: string[] =
     props.Tags?.multi_select.map((item: { name: string }) => item.name) || []
   const date: number = props.Date.date.start
-  const createdAt: string = created_time
-  const updatedAt: string = last_edited_time
+  const createdAt: string = created_time.substr(0, 10)
+  const updatedAt: string = last_edited_time.substr(0, 10)
   const published: boolean = props.Published.checkbox
   const url: string = getPostUrl(slug)
   const path: string = getPostPath(slug)
