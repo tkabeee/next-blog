@@ -16,7 +16,6 @@ import { formatDateStr } from '../../lib/helpers/blog-helper'
 import { getPageData } from '../../lib/notion/getPageData'
 
 import { spacingUnit, pageMaxWidth } from '../../styles/notion.global'
-
 type Params = {
   slug: string
 }
