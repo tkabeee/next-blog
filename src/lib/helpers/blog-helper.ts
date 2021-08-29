@@ -25,9 +25,9 @@ export const getApiAssetUrl = (assetUrl: string, blockId: string): string => {
 }
 
 export const formatDateStr = (date: string | number): string => {
-  return new Date(date).toLocaleString('ja-JP', {
-    month: '2-digit',
-    day: '2-digit',
+  return new Date(date).toLocaleString('en-US', {
+    month: 'long',
+    day: 'numeric',
     year: 'numeric',
   })
 }
