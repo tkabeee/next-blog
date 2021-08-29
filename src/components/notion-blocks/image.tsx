@@ -6,8 +6,8 @@ import { pageMaxWidth } from '../../styles/notion.global'
 interface Props {
   src: string
   alt?: string
-  width: string
-  height: string
+  width: number
+  height: number
   wrapped?: boolean
 }
 
