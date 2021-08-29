@@ -17,10 +17,7 @@ export const getPostUrl = (slug: string): string => {
 }
 
 export const getApiAssetPath = (assetUrl: string, blockId: string): string => {
-  return url.resolve(
-    '',
-    `/api/asset?assetUrl=${encodeURIComponent(assetUrl)}&blockId=${blockId}`
-  )
+  return url.resolve('', `/api/asset?assetUrl=${assetUrl}&blockId=${blockId}`)
 }
 
 export const getApiAssetUrl = (assetUrl: string, blockId: string): string => {
