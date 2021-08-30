@@ -13,8 +13,8 @@ const applyTags = (
 
   for (const tag of tags) {
     const props: { [key: string]: any } = { key }
-    let tagName: string = tag[0]
-    let elemType: React.ReactNode
+    let tagName: string | React.ReactNode = tag[0]
+    let elemType: React.ReactNode = tagName
 
     if (noPTag && tagName === 'p') elemType = React.Fragment
     if (tagName === 'c') elemType = components.Code
