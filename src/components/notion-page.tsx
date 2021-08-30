@@ -66,7 +66,7 @@ export const NotionPage = ({ data }: Props) => {
             const { format = {} } = value
             toRender.push(
               <NotionParagraph key={id} format={format}>
-                {textBlock(properties ? properties.title : [], true, id)}
+                {textBlock(properties?.title || [], true, id)}
               </NotionParagraph>
             )
             break
@@ -76,7 +76,7 @@ export const NotionPage = ({ data }: Props) => {
           case 'header': {
             toRender.push(
               <NotionHeader key={id} id={id}>
-                {textBlock(properties ? properties.title : [], true, id)}
+                {textBlock(properties?.title || [], true, id)}
               </NotionHeader>
             )
             break
@@ -86,7 +86,7 @@ export const NotionPage = ({ data }: Props) => {
           case 'sub_header': {
             toRender.push(
               <NotionSubHeader key={id} id={id}>
-                {textBlock(properties ? properties.title : [], true, id)}
+                {textBlock(properties?.title || [], true, id)}
               </NotionSubHeader>
             )
             break
@@ -96,7 +96,7 @@ export const NotionPage = ({ data }: Props) => {
           case 'sub_sub_header': {
             toRender.push(
               <NotionSubSubHeader key={id} id={id}>
-                {textBlock(properties ? properties.title : [], true, id)}
+                {textBlock(properties?.title || [], true, id)}
               </NotionSubSubHeader>
             )
             break
@@ -106,7 +106,7 @@ export const NotionPage = ({ data }: Props) => {
           case 'bulleted_list': {
             toRender.push(
               <NotionBulletedList key={id}>
-                {textBlock(properties ? properties.title : [], true, id)}
+                {textBlock(properties?.title || [], true, id)}
               </NotionBulletedList>
             )
             break
@@ -120,7 +120,7 @@ export const NotionPage = ({ data }: Props) => {
                 key={id}
                 number={numberedListIds.indexOf(id) + 1}
               >
-                {textBlock(properties ? properties.title : [], true, id)}
+                {textBlock(properties?.title || [], true, id)}
               </NotionNumberedList>
             )
             break
