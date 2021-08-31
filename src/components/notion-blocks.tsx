@@ -6,6 +6,7 @@ import { NotionBulletedList } from './notion-blocks/bulleted-list'
 import { NotionNumberedList } from './notion-blocks/numbered-list'
 import { NotionBookmark } from './notion-blocks/bookmark'
 import { NotionImage } from './notion-blocks/image'
+import { NotionVideo } from './notion-blocks/video'
 
 export {
   NotionParagraph,
@@ -16,4 +17,5 @@ export {
   NotionNumberedList,
   NotionBookmark,
   NotionImage,
+  NotionVideo,
 }

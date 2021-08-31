@@ -13,6 +13,7 @@ import {
   NotionNumberedList,
   NotionBookmark,
   NotionImage,
+  NotionVideo,
 } from './notion-blocks'
 
 const Page = styled.div`
@@ -161,6 +162,22 @@ export const NotionPage = ({ data }: Props) => {
                 width={width}
                 height={height}
                 wrapped={Object.keys(columnMap).indexOf(parent_id) != -1}
+              />
+            )
+            break
+          }
+
+          // Video blocks
+          case 'video': {
+            const { format = {} } = value
+            const { block_width, display_source } = format
+
+            toRender.push(
+              <NotionVideo
+                key={id}
+                id={id}
+                width={block_width}
+                source={display_source}
               />
             )
             break
