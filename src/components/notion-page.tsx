@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import styled from 'styled-components'
 
 import { INotionPageChunk } from '../models/notion/page-chunk'
@@ -14,6 +15,7 @@ import {
   NotionBookmark,
   NotionImage,
   NotionVideo,
+  NotionTweet,
 } from './notion-blocks'
 
 const Page = styled.div`
@@ -39,6 +41,21 @@ export const NotionPage = ({ data }: Props) => {
       children: React.ReactFragment[]
     }
   } = {}
+  const hasTweet = data.blocks.some((block) => block.value.type == 'tweet')
+
+  useEffect(() => {
+    const twitterSrc = 'https://platform.twitter.com/widgets.js'
+    if (hasTweet) {
+      if (window?.twttr?.widgets) {
+        window.twttr.widgets.load()
+      } else if (!document.querySelector(`script[src="${twitterSrc}"]`)) {
+        const script = document.createElement('script')
+        script.async = true
+        script.src = twitterSrc
+        document.querySelector('body').appendChild(script)
+      }
+    }
+  }, [])
 
   return (
     <Page>
@@ -180,6 +197,14 @@ export const NotionPage = ({ data }: Props) => {
                 source={display_source}
               />
             )
+            break
+          }
+
+          // Tweet blocks
+          case 'tweet': {
+            const { source } = properties
+
+            toRender.push(<NotionTweet key={id} id={id} source={source} />)
             break
           }
 
