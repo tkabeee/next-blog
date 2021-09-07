@@ -7,6 +7,7 @@ import { NotionNumberedList } from './notion-blocks/numbered-list'
 import { NotionBookmark } from './notion-blocks/bookmark'
 import { NotionImage } from './notion-blocks/image'
 import { NotionVideo } from './notion-blocks/video'
+import { NotionTweet } from './notion-blocks/tweet'
 
 export {
   NotionParagraph,
@@ -18,4 +19,5 @@ export {
   NotionBookmark,
   NotionImage,
   NotionVideo,
+  NotionTweet,
 }
