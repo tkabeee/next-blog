@@ -46,21 +46,20 @@ export const NotionPage = ({ data }: Props) => {
 
   useEffect(() => {
     if (hasTweet) {
-      window.twttr = (function (d, s, id) {
-        var js,
-          fjs = d.getElementsByTagName(s)[0],
-          t = window.twttr || {}
+      window.twttr = ((d, id) => {
+        const js: HTMLScriptElement = d.createElement('script')
+        const fjs: HTMLScriptElement = d.getElementsByTagName('script')[0]
+        const t: any = window.twttr || {}
         if (d.getElementById(id)) return t
-        js = d.createElement(s)
         js.id = id
         js.src = twitterWidgetsSrc
-        fjs.parentNode.insertBefore(js, fjs)
+        fjs.parentNode!.insertBefore(js, fjs)
         t._e = []
-        t.ready = function (f) {
+        t.ready = (f: any) => {
           t._e.push(f)
         }
         return t
-      })(document, 'script', 'twitter-wjs')
+      })(document, 'twitter-wjs')
     }
   }, [])
 
