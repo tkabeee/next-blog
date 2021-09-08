@@ -41,8 +41,10 @@ export const NotionPage = ({ data }: Props) => {
       children: React.ReactFragment[]
     }
   } = {}
-  const hasTweet = data.blocks.some((block) => block.value.type == 'tweet')
-  const twitterWidgetsSrc = 'https://platform.twitter.com/widgets.js'
+  const hasTweet: boolean = data.blocks.some(
+    (block) => block.value.type == 'tweet'
+  )
+  const twitterWidgetsSrc: string = 'https://platform.twitter.com/widgets.js'
 
   useEffect(() => {
     if (hasTweet) {
@@ -61,7 +63,7 @@ export const NotionPage = ({ data }: Props) => {
         return t
       })(document, 'twitter-wjs')
     }
-  }, [])
+  }, [hasTweet])
 
   return (
     <Page>
