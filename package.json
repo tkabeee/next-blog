@@ -22,15 +22,15 @@
     "typescript": "^5.1.6"
   },
   "devDependencies": {
-    "@types/katex": "^0.11.1",
-    "@types/node": "20.4.7",
-    "@types/prismjs": "^1.16.6",
-    "@types/react": "18.2.18",
-    "@types/react-dom": "18.2.7",
-    "@types/styled-components": "^5.1.12",
-    "autoprefixer": "10.4.14",
-    "eslint": "8.46.0",
-    "eslint-config-next": "13.4.12",
-    "prettier": "^2.4.1"
+    "@types/katex": "^0.16.2",
+    "@types/node": "^20.4.8",
+    "@types/prismjs": "^1.26.0",
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "@types/styled-components": "^5.1.26",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.46.0",
+    "eslint-config-next": "^13.4.12",
+    "prettier": "^3.0.1"
   }
 }
