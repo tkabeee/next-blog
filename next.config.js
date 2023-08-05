@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   env: {
     NOTION_TOKEN: process.env.NOTION_TOKEN,
@@ -10,6 +11,8 @@ module.exports = {
     USER_TIMEZONE: process.env.USER_TIMEZONE,
   },
   images: {
-    domains: ['localhost', 'noiton-blog.vercel.app'],
+    domains: ['localhost', 'kondo-blog.vercel.app'],
   },
 }
+
+module.exports = nextConfig
