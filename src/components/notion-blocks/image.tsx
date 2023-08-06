@@ -48,7 +48,7 @@ export const NotionImage = ({ src, alt, width, height, wrapped }: Props) => {
       <Div3>
         <Div2>
           <Div1>
-            <Image src={src} alt={alt} width={width} height={height} />
+            <Image src={src} alt={alt ?? ''} width={width} height={height} />
           </Div1>
         </Div2>
       </Div3>
