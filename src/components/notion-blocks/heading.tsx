@@ -5,7 +5,7 @@ export const Heading = ({
 }: {
   children: any,
   id: string,
-  Type: string | React.ComponentType
+  Type: string | React.ComponentType<any>
 }) => {
   return (
     <div id={blockId}>
