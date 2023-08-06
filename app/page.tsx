@@ -18,9 +18,9 @@ export const metadata: Metadata = {
   title: 'The Next Blog',
 }
 
-const posts = await findPosts()
+export default async function HomePage() {
+  const posts = await findPosts()
 
-export default function HomePage() {
   return (
     <>
       <Main>
