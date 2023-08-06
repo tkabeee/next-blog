@@ -10,6 +10,9 @@ const nextConfig = {
     USER_LOCALE: process.env.USER_LOCALE,
     USER_TIMEZONE: process.env.USER_TIMEZONE,
   },
+  experimental: {
+    serverActions: true,
+  },
   images: {
     domains: ['localhost', 'kondo-blog.vercel.app'],
   },
