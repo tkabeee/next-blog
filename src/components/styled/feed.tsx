@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { borderColors } from '@/styles/global'
 
-export const FeedArticleLink = styled.a`
+export const FeedArticleLink = styled.div`
   display: flex;
   border-top: 1px solid ${borderColors.gray};
   padding: 30px 0;
