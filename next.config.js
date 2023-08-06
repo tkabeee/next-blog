@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  compiler: {
+    styledComponents: true,
+  },
   env: {
     NOTION_TOKEN: process.env.NOTION_TOKEN,
     NOTION_INTEGRATION_TOKEN: process.env.NOTION_INTEGRATION_TOKEN,
@@ -16,6 +18,7 @@ const nextConfig = {
   images: {
     domains: ['localhost', 'kondo-blog.vercel.app'],
   },
+  reactStrictMode: true,
 }
 
 module.exports = nextConfig
