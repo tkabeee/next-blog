@@ -1,16 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: {
-    content: [
-      './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-      './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-      './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    ],
-    options: {
-      safelist: [/^-?m(\w?)-/, /^p(\w?)-/, /^text-/, /^bg-/],
-    },
-  },
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  safelist: [
+    { pattern: /^-?m(\w?)-/ },
+    { pattern: /^p(\w?)-/ },
+    { pattern: /^text-/ },
+    { pattern: /^bg-/ },
+  ],
   theme: {
     extend: {
       backgroundImage: {
