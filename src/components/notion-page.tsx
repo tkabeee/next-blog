@@ -68,7 +68,7 @@ export const NotionPage = ({ data }: Props) => {
   return (
     <Page>
       {(!data.blocks || data.blocks.length === 0) &&
-        console.log('This page has no content')}
+        <>{console.log('This page has no content')}</>}
       {(data.blocks || []).map((block, blockIdx) => {
         const { role, value } = block
         const { type, properties, id, parent_id } = value
