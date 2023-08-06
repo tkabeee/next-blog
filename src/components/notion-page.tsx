@@ -1,10 +1,12 @@
+'use client'
+
 import { useEffect } from 'react'
-import styled from 'styled-components'
 
 import { INotionPageChunk } from '../models/notion/page-chunk'
 import { textBlock } from '../lib/notion/renderers'
 import { getApiAssetUrl } from '../lib/helpers/blog-helper'
 
+import { Page } from './styled/notion'
 import {
   NotionParagraph,
   NotionHeader,
@@ -17,15 +19,6 @@ import {
   NotionVideo,
   NotionTweet,
 } from './notion-blocks'
-
-const Page = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 100%;
-  flex-shrink: 0;
-  flex-grow: 1;
-`
 
 interface Props {
   data: INotionPageChunk
