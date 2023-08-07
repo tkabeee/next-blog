@@ -1,12 +1,8 @@
 // https://github.com/ijjk/notion-blog/blob/main/src/pages/api/asset.ts
 
 import { NextApiRequest, NextApiResponse } from 'next'
-import { notionAssetUrls } from '../../src/lib/notion/api/notionAssetUrls'
-import {
-  setHeaders,
-  handleData,
-  handleError,
-} from '../../src/lib/notion/api/utils'
+import { notionAssetUrls } from '@/lib/notion/api/notionAssetUrls'
+import { setHeaders, handleData, handleError } from '@/lib/notion/api/utils'
 
 const notionAssetApi = async (req: NextApiRequest, res: NextApiResponse) => {
   if (setHeaders(req, res)) return
