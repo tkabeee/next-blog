@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import styled from 'styled-components'
 
@@ -45,9 +47,9 @@ export const Header = () => {
         <NavBarInner>
           <NavBarItems>
             <Link href={'/'} as={'/'} key={1}>
-              <a className="flex items-center">
+              <div className="flex items-center">
                 <NavBarTitle>The Next Blog</NavBarTitle>
-              </a>
+              </div>
             </Link>
             <GithubLink
               href="//github.com/tkabeee/next-blog"

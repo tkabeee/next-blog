@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 import { Wrapper } from '@/components/styled/layout'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 import '@/styles/tailwind.css'
 import '@/styles/root.css'
 import '@/styles/global.css'
@@ -22,7 +24,11 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={inter.className}>
-        <Wrapper>{children}</Wrapper>
+        <Wrapper>
+          <Header />
+          {children}
+          <Footer />
+        </Wrapper>
       </body>
     </html>
   )
