@@ -1,4 +1,4 @@
-// https://developers.notion.com/reference/page
+// ref: https://developers.notion.com/reference/page
 
 import { INotionFile } from './file'
 
@@ -10,11 +10,11 @@ export interface INotionPage {
   created_by: {
     object: string
     id: string
-  },
+  }
   last_edited_by: {
     object: string
     id: string
-  },
+  }
   cover: INotionFile
   icon: INotionFile
   parent: {
@@ -30,7 +30,7 @@ export interface INotionPage {
     Category: any
     Date: any
     Published: any
-  },
+  }
   url: string
   public_url: string
 }

@@ -1,4 +1,4 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/components/ext-link.tsx
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/components/ext-link.tsx
 
 export const ExtLink = (props: any) => (
   <a

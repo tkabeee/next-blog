@@ -1,4 +1,4 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/rpc.ts
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/rpc.ts
 
 import fetch, { Response } from 'node-fetch'
 import { API_ENDPOINT, NOTION_TOKEN } from '../constants'

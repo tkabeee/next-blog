@@ -1,4 +1,4 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/getPageData.ts
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/getPageData.ts
 
 import rpc, { values } from './api/rpc'
 

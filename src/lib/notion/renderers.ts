@@ -1,4 +1,4 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/renderers.ts
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/renderers.ts
 
 import React from 'react'
 import { components } from '../../components/dynamic'

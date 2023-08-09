@@ -1,4 +1,4 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/components/dynamic.tsx
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/components/dynamic.tsx
 
 import dynamic from 'next/dynamic'
 import { ExtLink } from './ext-link'

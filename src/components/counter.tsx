@@ -1,4 +1,4 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/components/counter.tsx
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/components/counter.tsx
 
 import React, { useState } from 'react'
 
