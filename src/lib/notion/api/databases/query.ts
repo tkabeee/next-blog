@@ -1,5 +1,4 @@
-// Reference
-// https://developers.notion.com/reference/database
+// ref: https://developers.notion.com/reference/database
 
 import { notion } from '../../client'
 import { INotionPage } from '../../../../models/notion/page'

@@ -1,4 +1,4 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/getPageData.ts
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/getPageData.ts
 
 import rpc, { values } from './api/rpc'
 
@@ -44,8 +44,8 @@ export function loadPageChunk({
   chunkNumber = 0,
   verticalColumns = false,
 }: any) {
-  return rpc('loadPageChunk', {
-    pageId,
+  return rpc('loadCachedPageChunk', {
+    page: { id: pageId },
     limit,
     cursor,
     chunkNumber,

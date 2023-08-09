@@ -1,4 +1,4 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/components/dynamic.tsx
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/components/dynamic.tsx
 
 import dynamic from 'next/dynamic'
 import { ExtLink } from './ext-link'
@@ -12,9 +12,9 @@ export interface Props {
   blockquote: string
   a: (props: any) => JSX.Element
   h: (props: any) => JSX.Element
-  Code: React.ReactNode
-  Counter: React.ReactNode
-  Equation: React.ReactNode
+  Code: React.ComponentType<any>
+  Counter: React.ComponentType<any>
+  Equation: React.ComponentType<any>
 }
 
 export const components: Props = {

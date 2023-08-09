@@ -1,5 +1,5 @@
+'use client'
+
 export const Footer = () => {
-  return (
-    <footer className='flex justify-center items-center w-full'></footer>
-  )
+  return <footer className="flex justify-center items-center w-full"></footer>
 }

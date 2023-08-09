@@ -1,4 +1,4 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/server-constants.js
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/server-constants.js
 
 // use commonjs so it can be required without transpiling
 const path = require('path')

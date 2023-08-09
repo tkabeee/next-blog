@@ -1,4 +1,4 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/components/equation.tsx
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/components/equation.tsx
 
 import { renderToString, ParseError } from 'katex'
 

@@ -1,32 +1,35 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/utils.ts
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/utils.ts
 
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextResponse } from 'next/server'
 
-export function setHeaders(req: NextApiRequest, res: NextApiResponse): boolean {
+export type Headers = {
+  [key: string]: string
+}
+
+export function setHeaders(headers: Headers): Headers {
   // set SPR/CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
-  res.setHeader('Access-Control-Allow-Methods', 'GET')
-  res.setHeader('Access-Control-Allow-Headers', 'pragma')
-
-  if (req.method === 'OPTIONS') {
-    res.status(200)
-    res.end()
-    return true
+  return {
+    ...headers,
+    'Access-Control-Allow-Origin': '*',
+    'Cache-Control': 's-maxage=1, stale-while-revalidate',
+    'Access-Control-Allow-Methods': 'GET',
+    'Access-Control-Allow-Headers': 'pragma',
   }
-  return false
 }
 
-export async function handleData(res: NextApiResponse, data: any) {
+export async function handleData(data: any) {
   data = data || { status: 'error', message: 'unhandled request' }
-  res.status(data.status !== 'error' ? 200 : 500)
-  res.json(data)
+  const status = data.status !== 'error' ? 200 : 500
+  return NextResponse.json(data, { status })
 }
 
-export function handleError(res: NextApiResponse, error: string | Error) {
+export function handleError(error: string | Error): NextResponse {
   console.error(error)
-  res.status(500).json({
-    status: 'error',
-    message: 'an error occurred processing request',
-  })
+  return NextResponse.json(
+    {
+      status: 'error',
+      message: 'an error occurred processing request',
+    },
+    { status: 500 }
+  )
 }

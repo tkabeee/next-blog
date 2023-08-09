@@ -1,12 +1,11 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/getNotionAssetUrls.ts
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/lib/notion/getNotionAssetUrls.ts
 
 import fetch from 'node-fetch'
 import { getError } from './rpc'
-import { NextApiResponse } from 'next'
+import { NextResponse } from 'next/server'
 import { NOTION_TOKEN, API_ENDPOINT } from '../constants'
 
 export const notionAssetUrls = async (
-  res: NextApiResponse,
   assetUrl: string,
   blockId: string
 ): Promise<{ signedUrls: string[] }> => {
@@ -34,7 +33,13 @@ export const notionAssetUrls = async (
     return assetRes.json()
   } else {
     console.log('bad request', assetRes.status)
-    res.json({ status: 'error', message: 'failed to load Notion asset' })
+    NextResponse.json(
+      {
+        status: 'error',
+        message: 'failed to load Notion asset',
+      },
+      { status: 400 }
+    )
     throw new Error(await getError(assetRes))
   }
 }

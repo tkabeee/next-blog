@@ -1,4 +1,4 @@
-// https://github.com/ijjk/notion-blog/blob/main/src/components/code.tsx
+// ref: https://github.com/ijjk/notion-blog/blob/main/src/components/code.tsx
 
 import Prism from 'prismjs'
 import 'prismjs/components/prism-jsx'
@@ -16,8 +16,9 @@ const Code = ({ children, language = 'javascript' }: Props) => {
           dangerouslySetInnerHTML={{
             __html: Prism.highlight(
               children,
-              Prism.languages[language.toLowerCase()] || Prism.languages.javascript,
-              language,
+              Prism.languages[language.toLowerCase()] ||
+                Prism.languages.javascript,
+              language
             ),
           }}
         />

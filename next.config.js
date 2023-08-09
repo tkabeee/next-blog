@@ -1,5 +1,8 @@
-module.exports = {
-  reactStrictMode: true,
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  compiler: {
+    styledComponents: true,
+  },
   env: {
     NOTION_TOKEN: process.env.NOTION_TOKEN,
     NOTION_INTEGRATION_TOKEN: process.env.NOTION_INTEGRATION_TOKEN,
@@ -9,7 +12,13 @@ module.exports = {
     USER_LOCALE: process.env.USER_LOCALE,
     USER_TIMEZONE: process.env.USER_TIMEZONE,
   },
-  images: {
-    domains: ['localhost', 'noiton-blog.vercel.app'],
+  experimental: {
+    serverActions: true,
   },
+  images: {
+    domains: ['localhost', 'kondo-blog.vercel.app'],
+  },
+  reactStrictMode: true,
 }
+
+module.exports = nextConfig
