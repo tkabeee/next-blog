@@ -9,11 +9,10 @@ import {
   Headers,
 } from '@/lib/notion/api/utils'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(req: NextRequest) {
-  let res = NextResponse.next()
-
   let headers: Headers = {}
-
   headers = setHeaders(headers)
 
   if (req.method === 'OPTIONS') {
