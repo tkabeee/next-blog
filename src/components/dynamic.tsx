@@ -12,9 +12,9 @@ export interface Props {
   blockquote: string
   a: (props: any) => JSX.Element
   h: (props: any) => JSX.Element
-  Code: React.ComponentType<any>
-  Counter: React.ComponentType<any>
-  Equation: React.ComponentType<any>
+  Code: React.ReactNode | React.ComponentType<any>
+  Counter: React.ReactNode | React.ComponentType<any>
+  Equation: React.ReactNode | React.ComponentType<any>
 }
 
 export const components: Props = {
