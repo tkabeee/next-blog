@@ -36,7 +36,13 @@ const Div1 = styled.div`
   width: 100%;
 `
 
-export const NotionImage = ({ src, alt, width, height, wrapped }: Props) => {
+export const NotionImage = ({
+  src,
+  alt = 'An image from Notion',
+  width,
+  height,
+  wrapped = false,
+}: Props) => {
   return (
     <Block
       style={{
@@ -54,9 +60,4 @@ export const NotionImage = ({ src, alt, width, height, wrapped }: Props) => {
       </Div3>
     </Block>
   )
-}
-
-NotionImage.defaultProps = {
-  alt: 'An image from Notion',
-  wrapped: false,
 }

@@ -90,5 +90,3 @@ export const NotionVideo = ({ id, width, source }: Props) => {
     </Block>
   )
 }
-
-NotionVideo.defaultProps = {}
